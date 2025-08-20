@@ -8,56 +8,35 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Aurora Chat Design System */
-    --background: 228 20% 4%;  /* #0B0B10 */
-    --foreground: 228 15% 94%; /* #EDEEF3 */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-    --card: 228 18% 7%;        /* #12131A */
-    --card-foreground: 228 15% 94%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 228 18% 7%;
-    --popover-foreground: 228 15% 94%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 228 15% 94%;
-    --primary-foreground: 228 20% 4%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 228 10% 65%;  /* #A6A8B3 */
-    --secondary-foreground: 228 15% 94%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 228 18% 12%;
-    --muted-foreground: 228 10% 65%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 228 18% 12%;
-    --accent-foreground: 228 15% 94%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 228 15% 94%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 228 18% 15%;
-    --input: 228 18% 12%;
-    --ring: 228 15% 94%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
 
-    --radius: 0.875rem; /* 14px */
-
-    /* Rainbow System */
-    --rainbow: linear-gradient(90deg, #FF66C4 0%, #9B5BFF 20%, #4C6CFF 40%, #12B7FF 60%, #4BE1B7 80%, #B6FF71 100%);
-    --rainbow-soft: linear-gradient(120deg, rgba(255,102,196,0.18), rgba(75,225,183,0.18));
-    --rainbow-border: linear-gradient(90deg, #FF66C4, #9B5BFF, #4C6CFF, #12B7FF, #4BE1B7, #B6FF71);
-    
-    /* Aurora Glow */
-    --aurora-glow: 0 0 60px rgba(255,102,196,0.15), 0 0 120px rgba(75,225,183,0.1);
-    
-    /* Glassmorphism */
-    --glass-bg: rgba(18, 19, 26, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    
-    /* Shadows */
-    --shadow-elevated: 0 6px 24px rgba(0, 0, 0, 0.35);
-    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.25);
-    
-    /* Transitions */
-    --transition-smooth: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-rainbow: background-position 300ms ease;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -122,159 +101,5 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-@layer components {
-  /* Rainbow Button Component */
-  .btn-rainbow {
-    @apply relative overflow-hidden;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(12px);
-    transition: var(--transition-smooth);
-  }
-  
-  .btn-rainbow::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    background: var(--rainbow-border);
-    border-radius: inherit;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: subtract;
-    opacity: 0;
-    transition: opacity 200ms ease;
-  }
-  
-  .btn-rainbow:hover::before {
-    opacity: 1;
-  }
-
-  /* Glass Surface */
-  .glass-surface {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(12px);
-    box-shadow: var(--shadow-elevated);
-  }
-
-  /* Aurora Background */
-  .aurora-bg {
-    background: radial-gradient(circle at 30% 20%, rgba(255,102,196,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(75,225,183,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(76,108,255,0.08) 0%, transparent 50%);
-  }
-
-  /* Rainbow Progress Bar */
-  .rainbow-progress {
-    height: 2px;
-    background: var(--rainbow);
-    background-size: 200% 100%;
-    animation: rainbow-flow 2s linear infinite;
-  }
-
-  /* Typing Indicator */
-  .typing-dots {
-    display: flex;
-    gap: 4px;
-  }
-  
-  .typing-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--rainbow);
-    background-size: 200% 100%;
-    animation: typing-pulse 1.4s ease-in-out infinite both,
-               rainbow-flow 3s linear infinite;
-  }
-  
-  .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-  .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-  .typing-dot:nth-child(3) { animation-delay: 0s; }
-
-  /* Message Bubbles */
-  .message-user {
-    @apply ml-auto max-w-[80%] rounded-2xl px-4 py-3;
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    transition: var(--transition-smooth);
-  }
-  
-  .message-user:hover {
-    box-shadow: var(--shadow-soft);
-    border-color: hsl(var(--accent));
-  }
-
-  .message-agent {
-    @apply mr-auto max-w-[85%] rounded-2xl px-4 py-3;
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-top: 2px solid transparent;
-    border-image: var(--rainbow) 1;
-    border-image-slice: 1;
-  }
-
-  /* Focus States */
-  .focus-rainbow:focus-visible {
-    outline: 2px solid transparent;
-    box-shadow: 0 0 0 2px rgba(255,102,196,0.3);
-  }
-
-  /* Segmented Control */
-  .segmented-control {
-    @apply p-1 rounded-xl;
-    background: hsl(var(--muted));
-  }
-  
-  .segmented-option {
-    @apply px-4 py-2 rounded-lg transition-all duration-200;
-  }
-  
-  .segmented-option.active {
-    @apply bg-card shadow-sm;
-    border-bottom: 2px solid transparent;
-    border-image: var(--rainbow) 1;
-    border-image-slice: 1;
-  }
-}
-
-@layer utilities {
-  /* Animation Keyframes */
-  @keyframes rainbow-flow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  @keyframes typing-pulse {
-    0%, 80%, 100% { 
-      transform: scale(0.8);
-      opacity: 0.5;
-    }
-    40% { 
-      transform: scale(1.2);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes aurora-pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.6; }
-  }
-
-  /* Reduced Motion */
-  @media (prefers-reduced-motion: reduce) {
-    .rainbow-progress,
-    .typing-dot,
-    .aurora-bg {
-      animation: none;
-    }
-    
-    .btn-rainbow::before {
-      transition: none;
-    }
   }
 }
